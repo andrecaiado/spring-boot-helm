@@ -8,3 +8,13 @@ spring:
       schemas: employee
       baselineOnMigrate: true
       enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
