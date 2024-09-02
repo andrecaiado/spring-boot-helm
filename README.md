@@ -12,13 +12,10 @@ This is a Spring Boot project that demos the use of Helm to deploy the applicati
 - [Try it out the API](#try-it-out-the-api)
 
 # Features
-- Deploy the application in a Kubernetes cluster using Helm
-- Uses config maps to store the application configuration
-- Uses secrets to store sensitive information
-- Uses persistent volumes to store the PostgreSQL data
-- Uses persistent volume claims to request storage
-- Uses a service to expose the application
-- Uses a deployment to manage the application
+- Deploys a Spring Boot application in a Kubernetes cluster using Helm.
+- The values for the k8s resources can be defined in different files according to the environment (dev, test, prod).
+- The k8s deployment loads application properties from a ConfigMap and sensitive data from a Secret.
+- Spring Boot Actuator is enabled to provide health check endpoints.
 
 # Requirements
 
@@ -31,9 +28,8 @@ To run this project, you will need the following tools:
 To install the Helm chart, you will need the following tools:
 
 - A local Kubernetes cluster (e.g. Minikube)
-- Docker
-- Helm
-- kubectl ??
+- Helm: https://helm.sh/docs/intro/install/
+- Docker (the application image is built and stored in the local Docker registry)
 
 # Getting Started
 
@@ -65,7 +61,19 @@ cd your-repository-name
 
 # Implementation
 
+This section provides an overview of the implementation details.
 
+## Containerize the application
+
+In order to deploy the application in a Kubernetes cluster, we need to containerize the application. The application is containerized using Docker. The Dockerfile is located in the root directory of the project.
+
+## Create the helm chart
+
+## Liveness and readiness probe
+
+The application is configured with liveness and readiness probes. The liveness probe checks if the application is running, and the readiness probe checks if the application is ready to receive requests.
+
+UPDATE THE IMPLEMENTATION: where do we define the liveness and readiness probes in the Helm chart?
 
 # Deploy the application in a Kubernetes cluster
 
@@ -73,7 +81,7 @@ cd your-repository-name
 
 The API can be tested using the Swagger UI or Postman.
 - The API documentation is available at [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
-- The Postman collection is available here: [spring-boot-template-rest-api.postman_collection.json](spring-boot-helm-rest-api.postman_collection.json)
+- The Postman collection is available here: [spring-boot-helm-rest-api.postman_collection.json](spring-boot-helm-rest-api.postman_collection.json)
 
 If running the application in a Kubernetes cluster, you need to find the external IP of the service to access the API. To do that, execute the following command:
 

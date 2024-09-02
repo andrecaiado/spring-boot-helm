@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b242b415-22c5-46ad-b547-58e9cb66f06c",
-		"name": "Spring Boot template REST API",
+		"name": "Spring Boot Helm REST API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "4423866"
 	},
