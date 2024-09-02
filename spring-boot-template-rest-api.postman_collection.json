@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "b242b415-22c5-46ad-b547-58e9cb66f06c",
+		"name": "Spring Boot template REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4423866"
+	},
+	"item": [
+		{
+			"name": "Get employee by id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/employees/21",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get employees",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/employees?page=0&size=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"David\",\n    \"lastName\": \"Brent\",\n    \"age\": 50,\n    \"designation\": \"Inverse local framework\",\n    \"phoneNumber\": \"501-193-9165\",\n    \"joinedOn\": \"2023-06-12\",\n    \"address\": \"11th Floor\",\n    \"dateOfBirth\": \"2023-03-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Michael\",\n    \"lastName\": \"Scott\",\n    \"age\": 50,\n    \"designation\": \"Inverse local framework\",\n    \"phoneNumber\": \"501-193-9165\",\n    \"joinedOn\": \"2023-06-12\",\n    \"address\": \"11th Floor\",\n    \"dateOfBirth\": \"2023-03-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/employees/21",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete employee by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"firstName\": \"Blayne\",\n    \"lastName\": \"Calleja\",\n    \"age\": 100,\n    \"designation\": \"Inverse local framework\",\n    \"phoneNumber\": \"501-193-9165\",\n    \"joinedOn\": \"2023-06-12\",\n    \"address\": \"11th Floor\",\n    \"dateOfBirth\": \"2023-03-01\",\n    \"createdAt\": \"2023-09-22T00:19:34\",\n    \"updatedAt\": \"2023-07-01T13:26:53\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/employees/21",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
