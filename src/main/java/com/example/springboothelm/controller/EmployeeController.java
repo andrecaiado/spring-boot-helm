@@ -1,8 +1,8 @@
-package com.example.springboottemplate.controller;
+package com.example.springboothelm.controller;
 
-import com.example.springboottemplate.dto.CreateEmployeeDto;
-import com.example.springboottemplate.dto.EmployeeDto;
-import com.example.springboottemplate.service.EmployeeService;
+import com.example.springboothelm.dto.CreateEmployeeDto;
+import com.example.springboothelm.dto.EmployeeDto;
+import com.example.springboothelm.service.EmployeeService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;

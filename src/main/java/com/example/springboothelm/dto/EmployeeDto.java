@@ -1,4 +1,4 @@
-package com.example.springboottemplate.dto;
+package com.example.springboothelm.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
-package com.example.springboottemplate;
+package com.example.springboothelm;
 
-import com.example.springboottemplate.service.EmployeeService;
+import com.example.springboothelm.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class SpringBootTemplateApplicationTests {
+class SpringBootHelmApplicationTests {
 
 	@Test
 	void contextLoads() {
