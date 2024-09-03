@@ -14,5 +14,7 @@ FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 # Copy the packaged JAR file to the container
 COPY --from=build /app/target/*.jar app.jar
+# Expose the port the application runs on
+EXPOSE 8080
 # Run the JAR file
 CMD ["java", "-jar", "app.jar"]

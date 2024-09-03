@@ -1,0 +1,36 @@
+# Values for the deployment of the postgresql
+postgresql:
+  fullnameOverride: postgres
+  image:
+    tag: 11.14.0-debian-10-r17
+  auth:
+    password: postgrespassword
+    username: postgres
+  commonLabels:
+    name: postgres
+    component: database
+    manager: helm
+  databasePort: 5432
+
+configmap:
+  name: spring-boot-helm-configmap
+
+# Values for the deployment of your app
+app:
+  name: spring-boot-helm
+  component: backend
+  manager: helm
+  image:
+    repository: spring-boot-helm
+    tag: 1.0.0
+
+deployments:
+  name: spring-boot-helm
+  containerPort: 8080
+  imagePullPolicy: Never
+  replicas: 1
+
+initContainers:
+  name: check-db-ready
+  image: postgres:16.3-alpine
+  command: ['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 5; done;']

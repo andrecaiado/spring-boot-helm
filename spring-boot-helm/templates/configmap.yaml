@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configmap.name }}
+data:
+  POSTGRES_SVC: {{quote .Values.postgresql.fullnameOverride }}
+  POSTGRES_PORT: {{quote .Values.postgresql.databasePort }}
+  POSTGRES_DB: {{quote .Values.postgresql.auth.database }}
+  POSTGRES_USER: {{quote .Values.postgresql.auth.username }}
+  POSTGRES_PASSWORD: {{quote .Values.postgresql.auth.password }}

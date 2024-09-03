@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+/spring-boot-helm/charts/
 
 ### STS ###
 .apt_generated

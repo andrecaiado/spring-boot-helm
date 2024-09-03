@@ -63,11 +63,45 @@ cd your-repository-name
 
 This section provides an overview of the implementation details.
 
+## K8s cluster resources overview
+
+The following diagram provides an overview of the k8s resources used to deploy the application in a Kubernetes cluster.
+
+![K8s resources overview](k8s-resources-overview.png)
+
 ## Containerize the application
 
-In order to deploy the application in a Kubernetes cluster, we need to containerize the application. The application is containerized using Docker. The Dockerfile is located in the root directory of the project.
+In order to deploy the application in a Kubernetes cluster, we need to containerize the application. The application is containerized using Docker. The [Dockerfile](Dockerfile) is located in the root directory of the project.
 
 ## Create the helm chart
+
+The Helm chart is used to deploy the application in a Kubernetes cluster. The Helm chart is located in the [spring-boot-helm](spring-boot-helm) directory.
+
+To create a new Helm chart, execute the following command in the root directory of the project:
+
+```shell
+helm create spring-boot-helm
+```
+
+To have a better understanding of the Helm chart directory structure, refer to the [Helm documentation](https://helm.sh/docs/topics/charts/).
+
+## Add the Postgresql dependency to the Helm chart
+
+In the [Chart.yaml](spring-boot-helm/Chart.yaml) file, add the Postgresql dependency to the Helm chart:
+
+```yaml
+dependencies:
+  - name: postgresql
+    version: 15.5.27
+    repository: https://charts.bitnami.com/bitnami
+```
+
+### Add the bitnami repository to local Helm
+
+To add the Bitnami repository to the local Helm, execute the following command:
+```shell
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
 
 ## Liveness and readiness probe
 

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.app.name }}
+      app.kubernetes.io/component: {{ .Values.app.component }}
+      app.kubernetes.io/managed-by: {{ .Values.app.manager }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.app.name }}
+        app.kubernetes.io/component: {{ .Values.app.component }}
+        app.kubernetes.io/managed-by: {{ .Values.app.manager }}
+    spec:
+      initContainers:
+        - name: {{ .Values.initContainers.name }}
+          image: {{ .Values.initContainers.image }}
+          command: ['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 5; done;']
+
+      containers:
+        - name: {{ .Values.deployments.name }}
+          image: {{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}
+          imagePullPolicy: {{ .Values.deployments.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.deployments.containerPort }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configmap.name }}
+          env:
+            - name: POSTGRES_HOST
+              value: postgres
+          resources: {}
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: {{ .Values.deployments.containerPort }}
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: {{ .Values.deployments.containerPort }}
