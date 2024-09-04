@@ -24,6 +24,9 @@ This is a Spring Boot project that demos the use of Helm to deploy the applicati
       - [Deployment](#deployment)
       - [Service](#service)
     - [Update the values.yaml file](#update-the-valuesyaml-file)
+    - [Validate and render the Helm chart](#validate-and-render-the-helm-chart)
+      - [Validate the Helm chart](#validate-the-helm-chart)
+      - [Render the Helm chart](#render-the-helm-chart)
 - [Install the Helm chart](#install-the-helm-chart)
 - [Uninstall the Helm chart](#uninstall-the-helm-chart)
 - [Access the application](#access-the-application)
@@ -184,6 +187,30 @@ The above-mentioned resource manifest files will have placeholders for the value
 
 Values for the Postgres dependency helm chart will also be defined in the values.yaml file. The placeholder values for the Postgres dependency are well-defined, so we must use them as they are.
 For more details about the Postgres dependency values, refer to the [Bitnami Postgresql chart documentation](https://artifacthub.io/packages/helm/bitnami/postgresql?modal=values)
+
+### Validate and render the Helm chart
+
+This section provides a step-by-step guide on how to validate and render the Helm chart.
+
+#### Validate the Helm chart
+
+To validate the Helm chart, execute the following command in the root directory of the project:
+
+```shell
+helm lint ./spring-boot-helm
+```
+
+The above command will validate the Helm chart and provide feedback if there are any issues.
+
+#### Render the Helm chart
+
+To render the Helm chart, execute the following command in the root directory of the project:
+
+```shell
+helm template spring-boot-helm ./spring-boot-helm
+```
+
+The output will be the rendered Helm chart. You can check the rendered Helm chart and make sure that the values are correctly defined in the resource manifest files.
 
 # Install the Helm chart
 
