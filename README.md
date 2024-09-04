@@ -205,6 +205,7 @@ To check the status of the Helm release, execute the following command:
 helm list
 ```
 
+The output will be similar to the following:
 ![helm-list.png](src%2Fmain%2Fresources%2Fhelm-list.png)
 
 To check the status of the k8s resources created by the Helm chart, execute the following command:
@@ -212,6 +213,7 @@ To check the status of the k8s resources created by the Helm chart, execute the 
 kubectl get all
 ```
 
+The output will be similar to the following:
 ![k-get-all.png](src%2Fmain%2Fresources%2Fk-get-all.png)
 
 To check the logs of the application pod, execute the following command:
@@ -230,10 +232,17 @@ helm uninstall spring-boot-helm
 
 If you are using Minikube (like in this project), in order to get the external IP of the service, you need to expose the service using the `minikube service` command.
 
-To expose the service, execute the following command:
+If you need to get the service name you can also use the kubectl command:
+```shell
+kubectl get svc
+```
+
+And them use the service name in the `minikube service` command:
 ```shell
 minikube service spring-boot-helm-service --url
 ```
+
+The command output will be the URL to access the application:
 
 ![mk-service-url.png](src%2Fmain%2Fresources%2Fmk-service-url.png)
 
@@ -242,5 +251,5 @@ For more information about this topic, refer to the [Minikube Accessing apps](ht
 # Try it out the application API
 
 The API can be tested using the Swagger UI or Postman.
-- The API documentation is available at [http://<replace-with-service-ip:port>/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
+- The API documentation is available at [http://replace-with-service-ip:port/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
 - The Postman collection is available here: [spring-boot-helm-rest-api.postman_collection.json](spring-boot-helm-rest-api.postman_collection.json)
