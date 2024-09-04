@@ -20,8 +20,7 @@ This is a Spring Boot project that demos the use of Helm to deploy the applicati
 - [Try it out the application API](#try-it-out-the-application-api)
 
 # Features
-- Deploys a Spring Boot application in a Kubernetes cluster using Helm.
-- The values for the k8s resources can be defined in different files according to the environment (dev, test, prod).
+- Deploys a Spring Boot application in a Kubernetes cluster using Helm charts.
 - The k8s deployment loads application properties from a ConfigMap and sensitive data from a Secret.
 - Spring Boot Actuator is enabled to provide health check endpoints.
 
@@ -81,7 +80,7 @@ This section provides an overview of the implementation details.
 
 The following diagram provides an overview of the k8s resources used to deploy the application in a Kubernetes cluster.
 
-![K8s resources overview](k8s-resources-overview.png)
+![k8s-resources-overview.png](src%2Fmain%2Fresources%2Fk8s-resources-overview.png)
 
 These resources will be created when the Helm chart is installed in the Kubernetes cluster.
 

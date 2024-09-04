@@ -7,4 +7,3 @@ data:
   POSTGRES_PORT: {{quote .Values.postgresql.databasePort }}
   POSTGRES_DB: {{quote .Values.postgresql.auth.database }}
   POSTGRES_USER: {{quote .Values.postgresql.auth.username }}
-  #POSTGRES_PASSWORD: {{quote .Values.postgresql.auth.password }}
