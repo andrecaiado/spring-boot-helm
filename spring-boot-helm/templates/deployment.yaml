@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: {{ .Values.initContainers.name }}
           image: {{ .Values.initContainers.image }}
-          command: ['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 5; done;']
+          command: {{ .Values.initContainers.command }}
 
       containers:
         - name: {{ .Values.deployments.name }}
@@ -29,6 +29,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Values.configmap.name }}
+            - secretRef:
+                name: {{ .Values.postgresql.auth.existingSecret }}
           env:
             - name: POSTGRES_HOST
               value: postgres
@@ -38,6 +40,10 @@ spec:
               path: /actuator/health/liveness
               port: {{ .Values.deployments.containerPort }}
           readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: {{ .Values.deployments.containerPort }}
+          startupProbe:
             httpGet:
               path: /actuator/health/readiness
               port: {{ .Values.deployments.containerPort }}

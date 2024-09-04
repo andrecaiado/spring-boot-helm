@@ -4,8 +4,10 @@ postgresql:
   image:
     tag: 11.14.0-debian-10-r17
   auth:
-    password: postgrespassword
     username: postgres
+    existingSecret: spring-boot-helm-secret
+    secretKeys:
+      adminPasswordKey: POSTGRES_PASSWORD
   commonLabels:
     name: postgres
     component: database
@@ -14,6 +16,9 @@ postgresql:
 
 configmap:
   name: spring-boot-helm-configmap
+
+secret:
+  name: spring-boot-helm-secret
 
 # Values for the deployment of your app
 app:
@@ -33,7 +38,7 @@ deployments:
 initContainers:
   name: check-db-ready
   image: postgres:16.3-alpine
-  command: ['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 10; done;']
+  command: "['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 10; done;']"
 
 service:
     port: 8080

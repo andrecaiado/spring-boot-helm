@@ -12,21 +12,8 @@ This is a Spring Boot project that demos the use of Helm to deploy the applicati
 - [Implementation](#implementation)
   - [K8s cluster resources overview](#k8s-cluster-resources-overview)
   - [Pre-requisites](#pre-requisites)
-    - [Containerize the application](#containerize-the-application)
-    - [Install the required tools](#install-the-required-tools)
-    - [Add the bitnami repository to local Helm](#add-the-bitnami-repository-to-local-helm)
   - [Create the helm chart](#create-the-helm-chart)
   - [Update the Helm chart](#update-the-helm-chart)
-    - [Delete the default resource manifest files](#delete-the-default-resource-manifest-files)
-    - [Add the Postgresql dependency to the Helm chart](#add-the-postgresql-dependency-to-the-helm-chart)
-    - [Create the resource manifest files](#create-the-resource-manifest-files)
-      - [ConfigMap](#configmap)
-      - [Deployment](#deployment)
-      - [Service](#service)
-    - [Update the values.yaml file](#update-the-valuesyaml-file)
-    - [Validate and render the Helm chart](#validate-and-render-the-helm-chart)
-      - [Validate the Helm chart](#validate-the-helm-chart)
-      - [Render the Helm chart](#render-the-helm-chart)
 - [Install the Helm chart](#install-the-helm-chart)
 - [Uninstall the Helm chart](#uninstall-the-helm-chart)
 - [Access the application](#access-the-application)
@@ -159,12 +146,17 @@ dependencies:
 Create the following resource manifest files in the `templates` directory:
 
 - ConfigMap: [configmap.yaml](spring-boot-helm/templates/configmap.yaml)
+- Secret: [secret.yaml](spring-boot-helm/templates/secret.yaml)
 - Deployment: [deployment.yaml](spring-boot-helm/templates/deployment.yaml)
 - Service: [service.yaml](spring-boot-helm/templates/service.yaml)
 
 #### ConfigMap
 
 The config map will contain properties that will be loaded into the Spring Boot application. These properties are mostly the database connection properties. 
+
+#### Secret
+
+The secret will contain sensitive data that will be loaded into the Spring Boot application. In this project, the secret will contain the database password encoded in base64.
 
 #### Deployment
 
